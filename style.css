@@ -5,7 +5,7 @@
 }
 
 :root {
-	--first-color: #fa1406;
+	--first-color: rgb(250, 20, 6);
 	--second-color: rgb(190, 210, 197);
 }
 
@@ -31,19 +31,27 @@ body {
 	border-radius: 8px;
 	box-shadow: 5px 5px 5px black;
 	color: #fff;
+	overflow: hidden;
 }
 
-.info {
+.info i {
+	font-size: 24px;
 	position: absolute;
 	top: 6px;
 	right: 14px;
 	padding: 20px;
-	font-size: 24px;
 	color: var(--second-color);
 	cursor: pointer;
 	transition: color 0.3s;
 }
-.info:hover {
+
+.info .fa-question {
+	right: 14px;
+}
+.info .fa-paintbrush {
+	right: 60px;
+}
+.info i:hover {
 	color: var(--first-color);
 }
 
@@ -153,4 +161,56 @@ button:focus {
 	100% {
 		opacity: 1;
 	}
+}
+.colors {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	position: absolute;
+	top: 100px;
+	right: -100px;
+	width: 60px;
+	height: 260px;
+	transition: right 0.5s;
+}
+.color {
+	width: 44px;
+	height: 44px;
+	border: 2px solid black;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.show-colors {
+	right: 10px;
+}
+.one {
+	background-color: rgb(250, 20, 6);
+}
+.two {
+	background-color: rgb(6, 173, 250);
+}
+.three {
+	background-color: rgb(0, 255, 42);
+}
+.four {
+	background-color: rgb(250, 246, 6);
+}
+.one:hover {
+	background-color: rgba(250, 20, 6, 0.7);
+	box-shadow: 0 0 12px rgb(255, 13, 0);
+}
+.two:hover {
+	background-color: rgba(6, 173, 250, 0.7);
+	box-shadow: 0 0 12px rgb(0, 174, 255);
+}
+.three:hover {
+	background-color: rgba(0, 255, 42, 0.7);
+	box-shadow: 0 0 12px rgb(0, 255, 0);
+}
+.four:hover {
+	background-color: rgba(250, 246, 6, 0.7);
+	box-shadow: 0 0 12px rgb(250, 246, 6);
 }
