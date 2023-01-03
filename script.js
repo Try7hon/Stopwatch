@@ -20,35 +20,47 @@ const colorPanel = document.querySelector('.colors');
 let root = document.documentElement;
 
 let countTime;
-let minutes = 0;
+let countSS;
+let miliseconds = 0;
 let seconds = 0;
+let minutes = 0;
 let timesArr = [];
 
 const handleStart = () => {
 	clearInterval(countTime);
+	clearInterval(countSS);
 
-	countTime = setInterval(() => {
-		if (seconds < 9) {
+	countSS = setInterval(() => {
+		miliseconds++;
+		if (miliseconds === 100) {
+			miliseconds = 0;
 			seconds++;
-			stopwatch.textContent = `${minutes}:0${seconds}`;
-		} else if (seconds >= 9 && seconds < 59) {
-			seconds++;
-			stopwatch.textContent = `${minutes}:${seconds}`;
-		} else {
-			minutes++;
-			seconds = 0;
-			stopwatch.textContent = `${minutes}:${seconds}`;
+			if (seconds === 60) {
+				seconds = 0;
+				minutes++;
+				if (minutes === 60) {
+					return;
+				}
+			}
 		}
-	}, 1000);
-};
 
+		let ms = miliseconds < 10 ? '0' + miliseconds : miliseconds;
+		let s = seconds < 10 ? '0' + seconds : seconds;
+		let m = minutes < 10 ? '0' + minutes : minutes;
+
+		stopwatch.innerHTML = `${m}:${s}:${ms}`;
+	}, 10);
+};
 const handlePause = () => {
 	clearInterval(countTime);
+	clearInterval(countSS);
 };
 
 const initialStatus = () => {
 	clearInterval(countTime);
-	stopwatch.textContent = '0:00';
+	clearInterval(countSS);
+	stopwatch.textContent = '00:00:00';
+	miliseconds = 0;
 	seconds = 0;
 	minutes = 0;
 	timeList.textContent = '';
@@ -57,7 +69,7 @@ const initialStatus = () => {
 const handleStop = () => {
 	time.innerHTML = `Ostatni czas: ${stopwatch.textContent}`;
 
-	if (stopwatch.textContent != '0:00') {
+	if (stopwatch.textContent != '00:00:00') {
 		time.style.visibility = 'visible';
 		timesArr.push(stopwatch.textContent);
 	}

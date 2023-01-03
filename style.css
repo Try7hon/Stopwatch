@@ -15,7 +15,7 @@ body {
 	align-items: center;
 	flex-direction: column;
 	min-height: 100vh;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Courier Prime', monospace;
 	background-color: #333;
 }
 
@@ -65,11 +65,17 @@ h1 {
 	font-size: 72px;
 	color: var(--first-color);
 }
+.stopwatch span {
+	font-size: 42px;
+}
 
 .time {
 	visibility: hidden;
 	color: var(--second-color);
-	font-size: 22px;
+	font-size: 24px;
+}
+.time span {
+	font-size: 18px;
 }
 
 .buttons {
