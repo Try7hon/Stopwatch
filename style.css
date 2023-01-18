@@ -150,10 +150,12 @@ button:focus {
 	display: block;
 	margin: 40px auto 0;
 	width: 200px;
-	background-color: var(--first-color);
+	background-color: transparent;
+	color: #333;
+	font-weight: bold;
 }
 .modal .close:hover {
-	background-color: rgb(226, 36, 26);
+	background-color: var(--first-color);
 }
 
 .modal-animation {
